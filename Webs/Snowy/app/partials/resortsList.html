@@ -1,0 +1,11 @@
+<p>pantalla con la lista de estaciones</p>
+<ul>
+    <li ng-repeat="resort in resorts | orderBy:'resort.name'">
+        <nav>
+             <a href="#/resorts/{{resort.name}}">{{resort.name}}</a>
+        </nav>
+    </li>
+</ul>
+
+
+<a href="#/resorts/Astun">Astun</a>
