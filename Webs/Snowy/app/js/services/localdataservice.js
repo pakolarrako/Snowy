@@ -63,7 +63,7 @@ angular.module('snowy.localdataservice', []).
                 UserTables = [];
               }
               var finded = 0;
-              for(var i=0; i<UserTables.length; i++){
+              for(var i=0; i< UserTables.length; i++){
                 var localt = UserTables[i];
                 if (localt.tablename === table.tablename)
                 {
@@ -112,12 +112,23 @@ angular.module('snowy.localdataservice', []).
               }
             }
     };
-
+    var getResorts = function(){
+      return Resorts;
+    };
+    var getCountries = function(){
+      return Countries;
+    };
+    var getContinents = function(){
+      return Continents;
+    };
+    var getResortHashTags = function(){
+      return ResortsHashTags;
+    };
     return {
-      Continents : Continents,
-      Countries : Countries,
-      Resorts : Resorts,
-      ResortsHashTags : ResortsHashTags,
+      getContinents : getContinents,
+      getCountries : getCountries,
+      getResorts : getResorts,
+      getResortHashTags : getResortHashTags,
       sincroData : sincroData
     };
   });
