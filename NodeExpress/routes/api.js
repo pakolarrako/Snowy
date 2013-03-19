@@ -109,8 +109,8 @@ exports.api = function(models)
 				idapp : idapp,
 				name: name,
 				email: email,
-				lastLat: req.body.lastLat,
-				lastLng: req.body.lastLng
+				lastlat: req.body.lastLat,
+				lastlng: req.body.lastLng
 				});
 
 				user.save(function (err) {
@@ -126,12 +126,44 @@ exports.api = function(models)
 			}
 		});
 	};
+	var updateUser = function(req,res){
+		console.log('update user');
+		var name = req.body.name;
+		var email = req.body.email;
+		var idapp = req.params.idapp;
+		var query = models.UserModel.findOne({"name" : name });
+		var user = null;
+		query.select("_id");
+		query.exec(function(err,user){
+			if (err){
+				console.log(err);
+				res.statusCode = 500;
+			}
+			if (user){
+				models.UserModel.update({name:name}, { lastlat: req.body.lastlat, lastlng: req.body.lastlng }, {upsert: false}, function(err){
+					if (err){
+						console.log(err);
+						res.statusCode = 500;
+					}else
+					{
+						res.statusCode = 200;
+					}
+					res.send();
+				});
+			}else
+			{
+				res.statusCode = 404;
+				res.send();
+			}
+		});
+	};
 
 	return {
 		root : root,
 		apps : apps,
 		loginUser : loginUser,
 		registerUser : registerUser,
+		updateUser: updateUser,
 		countries : countries,
 		continents : continents,
 		updatetables : updatetables,

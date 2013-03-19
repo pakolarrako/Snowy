@@ -249,6 +249,7 @@ app.get('/api/continent', routesapi.api.continents);
 app.get('/api/country', routesapi.api.countries);
 app.get('/api/:idapp/user/:name/login/:email', routesapi.api.loginUser);
 app.post('/api/:idapp/user', routesapi.api.registerUser);
+app.put('/api/:idapp/user', routesapi.api.updateUser);
 //application index
 app.get('/', routesapp.index);
 ////////////////////////////////////////////////////////////////////
