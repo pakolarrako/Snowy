@@ -28,12 +28,12 @@ angular.module('snowy.userservice', []).
         });
     };
 
-    var registerUser = function(name, email, callback){    
+    var registerUser = function(name, email, callback){
       var login = new remotedata.Login();
       login.name = name;
       login.email = email;
-      login.lastLat = 0;
-      login.lastLng = 0;
+      login.lastlat = 0;
+      login.lastlng = 0;
       login.$save(function(user){
         localStorage["user"] = JSON.stringify(user);
         callback(user);
@@ -42,11 +42,31 @@ angular.module('snowy.userservice', []).
         callback(response);
       });
     };
+    var geolocateUser = function(callback){
+      navigator.geolocation.getCurrentPosition(function(position){
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        var login = new remotedata.Login();
+        var o = JSON.parse(localStorage["user"]);
+        o.lastlat = lat;
+        o.lastlng = lon;
+        for (var p in o){
+          login[p] = o[p];
+        }
+        localStorage["user"] = JSON.stringify(o);
+        login.$update();
+        callback(position);
+      },function(err){
+        console.log(err);
+        callback(err);
+      });
+    };
 
     return {
       user : user,
       existsUser : existsUser,
       loggUser : loggUser,
-      registerUser : registerUser
+      registerUser : registerUser,
+      geolocateUser : geolocateUser
     };
   });

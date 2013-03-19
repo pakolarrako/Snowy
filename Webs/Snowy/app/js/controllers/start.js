@@ -4,7 +4,9 @@ function startCtrl($scope, $location, login, localdata)
 	if (login.existsUser()){
 		login.loggUser(login.user.name, login.user.email,function(data, status){
 			if (!data.status){
-				$location.path('/resorts');
+				login.geolocateUser(function(){
+					$location.path('/resorts');
+				});
 			}
 		});
 	}else
