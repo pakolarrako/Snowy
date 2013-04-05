@@ -51,11 +51,18 @@ factory('twitter',function(remotedata){
 				if (exists === false)
 				{
 					if (userTweets.length === maxUser){
-						userTweets.slice();
+						userTweets.pop();
 					}
 					userTweets.push(tweet);
 				}
 			}
+			userTweets.sort(function(a,b){
+				var adate = new Date(a.created_at);
+    			var bdate = new Date(b.created_at);
+				return adate>bdate ? -1 : adate<bdate ? 1 : 0;
+			});
+			console.log('userTweets');
+			console.log(userTweets);
 			callbackUser(userTweets);
 		}, function(res){
 			console.log(res);
@@ -79,11 +86,18 @@ factory('twitter',function(remotedata){
 				if (exists === false)
 				{
 					if (searchTweets.length === maxSearch){
-						searchTweets.slice();
+						searchTweets.pop();
 					}
 					searchTweets.push(tweet);
 				}
 			}
+			console.log('searchTweets');
+			console.log(searchTweets);
+			searchTweets.sort(function(a,b){
+					var adate = new Date(a.created_at);
+	    			var bdate = new Date(b.created_at);
+					return adate>bdate ? -1 : adate<bdate ? 1 : 0;
+				});
 			callbackSearch(searchTweets);
 		});
 	};

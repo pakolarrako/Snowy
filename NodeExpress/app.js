@@ -235,6 +235,72 @@ if (initBD === 2)
 
 
 }
+if (initBD === 3)
+{
+	var catNieve = new models.RateCategoryModel({
+		idapp : '51332856f23804d02b000001',
+		name : 'Nieve'
+	});
+	var catMeteo = new models.RateCategoryModel({
+		idapp : '51332856f23804d02b000001',
+		name : 'Meteorologia'
+	});
+	var catVisibilidad = new models.RateCategoryModel({
+		idapp : '51332856f23804d02b000001',
+		name : 'Visibilidad'
+	});
+	var catGente = new models.RateCategoryModel({
+		idapp : '51332856f23804d02b000001',
+		name : 'Gente'
+	});
+
+	var updateRateCategorygdb = new models.UpdatedTablesModel({
+		idapp : '51332856f23804d02b000001',
+		tablename :'RateCategory',
+		datetime : new Date()
+	});
+
+	catNieve.save(function (err){
+		if (!err) {
+			return console.log("created rate update");
+		} else {
+			return console.log(err);
+		}
+    });
+
+    catMeteo.save(function (err){
+		if (!err) {
+			return console.log("created rate update");
+		} else {
+			return console.log(err);
+		}
+    });
+
+    catVisibilidad.save(function (err){
+		if (!err) {
+			return console.log("created rate update");
+		} else {
+			return console.log(err);
+		}
+    });
+
+    catGente.save(function (err){
+		if (!err) {
+			return console.log("created rate update");
+		} else {
+			return console.log(err);
+		}
+    });
+
+	updateRateCategorygdb.save(function (err){
+		if (!err) {
+			return console.log("created rate update");
+		} else {
+			return console.log(err);
+		}
+    });
+
+}
 
 ////////////////////////////////////////////////////////////////////
 
@@ -245,11 +311,17 @@ app.get('/api/apps', routesapi.api.apps);
 app.get('/api/:idapp/updatetable', routesapi.api.updatetables);
 app.get('/api/:idapp/resort', routesapi.api.resorts);
 app.get('/api/:idapp/resorthashtag', routesapi.api.resortshashtags);
+app.get('/api/:idapp/ratecategory', routesapi.api.rateCategory);
+app.post('/api/:idapp/rate',routesapi.api.insertRate);
+app.put('/api/:idapp/rate',routesapi.api.updateRate);
+app.get('/api/:idapp/rate/:name/:resname/:catname/:date',routesapi.api.getRate);
 app.get('/api/continent', routesapi.api.continents);
 app.get('/api/country', routesapi.api.countries);
 app.get('/api/:idapp/user/:name/login/:email', routesapi.api.loginUser);
 app.post('/api/:idapp/user', routesapi.api.registerUser);
 app.put('/api/:idapp/user', routesapi.api.updateUser);
+
+//app.get('api/:idapp/resort/:nresame/rate/:date', routesapi.api.getResortRate );
 //application index
 app.get('/', routesapp.index);
 ////////////////////////////////////////////////////////////////////

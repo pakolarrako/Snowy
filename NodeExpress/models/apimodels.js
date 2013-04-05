@@ -83,16 +83,25 @@ exports.models = function(mongoose){
 		idapp : { type : ObjectId, required : true }, //app where the comment was placed
 		iduser : { type : ObjectId, required : true}, //user that placed the comment
 		idresort : { type : ObjectId, required : true}, //resort where the comment was placed
-		comment : { type : String, required : true} //comment placed by the user
+		comment : { type : String, required : true}, //comment placed by the user
+		lastlat : { type : Number, required : false}, //the last location of the user, the user could be showed in google maps
+		lastlng : { type : Number, required : false} //the last location of the user, the user could be showed in google maps
 	});
-
+	var RateCategory = new Schema({
+		idapp : { type : ObjectId, required : true },
+		name : { type : String, required : true }
+	});
 	//UserRates table where an user can rate an station for one day
 	var UserRate = new Schema({
 		idapp : { type : ObjectId, required : true },
 		iduser : { type : ObjectId, required : true},
 		idresort : { type : ObjectId, required : true},
+		idratecategory : { type : ObjectId, required : true},
 		datetime : { type : Date, required : true},
-		rate : { type : Number, required : true}
+		rate : { type : Number, required : true},
+		lastlat : { type : Number, required : false}, //the last location of the user, the user could be showed in google maps
+		lastlng : { type : Number, required : false},
+		distance : {type : Number, required : false} //the last location of the user, the user could be showed in google maps
 	});
 
 	//MODELS INSTANTIATION
@@ -106,6 +115,7 @@ exports.models = function(mongoose){
 	var UserModel = mongoose.model('User', User);
 	var UserCommentsModel = mongoose.model('UserComments', UserComments);
 	var UserRateModel  = mongoose.model('UserRate', UserRate);
+	var RateCategoryModel = mongoose.model('RateCategory', RateCategory);
 	//EXPORTING MODELS
 	return  {
 		ApplicationModel : ApplicationModel,
@@ -117,6 +127,7 @@ exports.models = function(mongoose){
 		ResortStatisticsModel: ResortStatisticsModel,
 		UserModel : UserModel,
 		UserCommentsModel : UserCommentsModel,
-		UserRateModel : UserRateModel
+		UserRateModel : UserRateModel,
+		RateCategoryModel : RateCategoryModel
 	};
 }(mongoose);

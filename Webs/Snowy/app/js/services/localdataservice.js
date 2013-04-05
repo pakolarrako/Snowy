@@ -7,6 +7,7 @@ angular.module('snowy.localdataservice', []).
     var Resorts = [];
     var ResortsHashTags = [];
     var UserTables = [];
+    var RateCategories = [];
     var sincroData = function(){
         remotedata.UpdateTable.query(function(data){
             if (!localStorage["updatetable"]){
@@ -39,6 +40,9 @@ angular.module('snowy.localdataservice', []).
                           break;
                         case 'ResortHashtag':
                           ResortsHashTags =  JSON.parse(localStorage["resorthashtag"]);
+                          break;
+                        case 'RateCategory' :
+                          RateCategories =  JSON.parse(localStorage["ratecategory"]);
                           break;
                       }
                     }
@@ -109,6 +113,13 @@ angular.module('snowy.localdataservice', []).
                     ResortsHashTags = data;
                   });
                   break;
+                case 'RateCategory' :
+                    remotedata.RateCategory.query(function(data){
+                    localStorage["ratecategory"] = JSON.stringify(data);
+                    setTableDatetime(table);
+                    RateCategories = data;
+                  });
+                  break;
               }
             }
     };
@@ -124,11 +135,15 @@ angular.module('snowy.localdataservice', []).
     var getResortHashTags = function(){
       return ResortsHashTags;
     };
+    var getRateCategories = function(){
+      return RateCategories;
+    };
     return {
       getContinents : getContinents,
       getCountries : getCountries,
       getResorts : getResorts,
       getResortHashTags : getResortHashTags,
+      getRateCategories : getRateCategories,
       sincroData : sincroData
     };
   });

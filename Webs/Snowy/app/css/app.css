@@ -28,3 +28,171 @@
   content: "";
   padding: 0;
 }
+@font-face {
+   font-family: arial_snowy;
+   src: url('arlrdbd.ttf'),
+     url('arlrdbd.otf'); /* IE9 */
+ }
+
+body {
+	padding-top:10px;
+	padding-left:auto;
+	padding-right:auto;
+	text-align:center;
+	min-height: 500px;
+	width:100%;
+	color: #fff;
+	font-size: 14px;
+	font-family: 'arial_snowy', Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	
+	background-color: #10bcbc; 
+    background-image: url('../img/snow.png'), url('../img/snow2.png'), url('../img/snow3.png');
+     
+    -webkit-animation: snow 20s linear infinite;
+    -moz-animation: snow 20s linear infinite;
+    -ms-animation: snow 20s linear infinite;
+    animation: snow 20s linear infinite;
+
+	
+}
+
+.title {
+	font-size:22px;
+	text-align:center;
+	margin-bottom:0px;
+	}
+
+.logo_snowy{
+	height:154px;
+	width:151px;
+	background-image:url(../img/logo_snowy.png);
+	background-repeat:no-repeat;
+	background-position: top;
+	margin-left:auto;
+	margin-right:auto;
+	-webkit-box-shadow: 0px 0px 46px -6px rgba(0,0,0,0.38);
+	-moz-box-shadow: 0px 0px 46px -6px rgba(0,0,0,0.38);
+	box-shadow: 0px 0px 46px -6px rgba(0,0,0,0.38);
+	border-radius:27px;
+	-webkit-animation:gira 3s alternate infinite;
+	position:relative;
+	}
+
+.button_start{
+	
+	}
+
+.button_start a{
+	font-size: 18px;
+	text-decoration:none;
+	color:#fff;
+	height: 18px;
+}
+
+.shadow_bot{
+	padding-bottom: 3px;
+	padding-top: 3px;
+	}
+
+
+@-webkit-keyframes gira 
+{
+0% {top: 0px;}
+50% {top: 20px;}
+100% {top:0px;}
+}
+
+@keyframes snow {
+0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+ 100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+}
+ 
+@-moz-keyframes snow {
+0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+}
+ 
+@-webkit-keyframes snow {
+0% {background-position: 0px 0px, 0px 0px, 0px 0px; background-color:#10bcbc}
+ 50% {background-color:#6d3ba2;}
+ 100% {background-position: 500px 1000px, 400px 400px, 300px 300px; background-color:#10bcbc;}
+}
+ 
+@-ms-keyframes snow {
+0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+ 100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+}
+
+.login_snowy{
+	height:154px;
+	width:151px;
+	background-image:url(../img/login_snowy.png);
+	background-repeat:no-repeat;
+	background-position: top;
+	margin-left:auto;
+	margin-right:auto;
+	-webkit-animation:gira 3s alternate infinite;
+	position:relative;
+
+	}
+
+.register_snowy{
+	height:154px;
+	width:151px;
+	background-image:url(../img/register_snowy.png);
+	background-repeat:no-repeat;
+	background-position: top;
+	margin-left:auto;
+	margin-right:auto;
+	-webkit-animation:gira 3s alternate infinite;
+	position:relative;
+	}
+
+.resorts {
+	text-decoration:none;
+	height:36px;
+	width: 100%;
+	position:relative;
+	left:-25px;
+	background-image:url(../img/shadow_button.png);
+	background-position:bottom;
+	background-repeat:no-repeat;
+	vertical-align:middle;
+}
+
+.resorts a{
+	text-decoration:none;
+	color:#fff;
+	position:relative;
+	top:10px;
+	}
+
+.anim_resort{
+	height:154px;
+	width:151px;
+	background-image:url(../img/estaciones_snowy.png);
+	background-repeat:no-repeat;
+	background-position: top;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+	}
+
+.lupa {
+	height:64px;
+	width:63px;
+	background-image:url(../img/lupa.png);
+	background-repeat:no-repeat;
+	background-position: top;
+	-webkit-animation:lupa 5s alternate infinite;
+	position:relative;
+	}
+
+@-webkit-keyframes lupa 
+{
+0% {top: 20px; left:20px}
+33% {top: 60px; left:80px}
+66% {top: 60px; left:0px}
+100% {top:20px; left:20px}
+}
