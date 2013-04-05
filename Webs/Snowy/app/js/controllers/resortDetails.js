@@ -1,8 +1,12 @@
-function resortDetailsCtrl($scope, $location, $routeParams, localdata, twitter, weather)
+function resortDetailsCtrl($scope, $location, $routeParams, login, localdata, twitter, weather)
 {
 	console.log($routeParams);
+	login.redirectIfNotLogged();
 	var name = $routeParams.resortname;
 	var resorts = localdata.getResorts();
+	var index = 0;
+	$scope.currentDate = new Date();
+	console.log($scope.currentDate);
 	$scope.currentResort = null;
 	for(var r in resorts){
 		if (resorts[r].name === name){
@@ -19,20 +23,29 @@ function resortDetailsCtrl($scope, $location, $routeParams, localdata, twitter, 
 	var setUserTwitter = function(result){
 		if (result){
 			$scope.userTweets = result;
-			$scope.currentUserTweet = result[result.length-1];
+			$scope.currentUserTweet = result[index];
 		}
 	};
 	var setSearchTwitter = function(result){
 		if (result){
+			index = 0;
 			$scope.searchTweets = result;
-			$scope.currentSearchTweet = result[result.length-1];
+			$scope.currentSearchTweet = result[index];
 		}
 	};
 	var setWeatherForecast = function(result){
 		if (result){
-			$scope.weather = result;
-			console.log(result);		}
+			index = 0;
+			var dayforecast = result.forecast.simpleforecast.forecastday[0];
+			$scope.weather = dayforecast;
+			console.log(dayforecast);
+		}
+	};
+
+	$scope.rate = function()
+	{
+		$location.path('/resorts/rate/'+ $scope.currentResort.name);
 	};
 
 }
-resortDetailsCtrl.$inject = ['$scope','$location','$routeParams','localdata', 'twitter', 'weather'];
+resortDetailsCtrl.$inject = ['$scope','$location','$routeParams','login','localdata', 'twitter', 'weather'];

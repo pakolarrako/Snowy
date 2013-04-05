@@ -1,0 +1,19 @@
+<p>Pantalla con el detalle de la estacion</p>
+<label data-ng-bind="currentResort.name"></label>
+<br/>
+<ul>
+    <li ng-repeat="category in categories | orderBy:'category.name'">
+        <nav>
+             <label data-ng-bind="category.name"></label>
+             <button data-ng-click="rate(category,1)">1</button>
+             <button data-ng-click="rate(category,2)">2</button>
+             <button data-ng-click="rate(category,3)">3</button>
+             <button data-ng-click="rate(category,4)">4</button>
+             <button data-ng-click="rate(category,5)">5</button>
+             <label>Seleccionada:</label>
+             <label>{{category.rate.rate}}</label>
+        </nav>
+    </li>
+</ul>
+<br/>
+<a href="#/resorts/{{currentResort.name}}">Rate!!!</a>

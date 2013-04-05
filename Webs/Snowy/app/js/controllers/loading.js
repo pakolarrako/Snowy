@@ -1,5 +1,5 @@
-function loadingCtrl($scope, $location)
+function loadingCtrl($scope, $location, login)
 {
-
+	login.redirectIfNotLogged();
 }
-loadingCtrl.$inject = ['$scope','$location'];
+loadingCtrl.$inject = ['$scope','$location', 'login'];

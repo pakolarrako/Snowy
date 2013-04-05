@@ -1,5 +1,6 @@
-function resortListCtrl($scope, $location, localdata)
+function resortListCtrl($scope, $location,login, localdata)
 {
+	login.redirectIfNotLogged();
 	$scope.resorts = localdata.getResorts();
 }
-resortListCtrl.$inject = ['$scope','$location', 'localdata'];
+resortListCtrl.$inject = ['$scope','$location','login', 'localdata'];

@@ -1,6 +1,7 @@
-<p>pantalla con la lista de estaciones</p>
-<ul>
-    <li ng-repeat="resort in resorts | orderBy:'resort.name'">
+<div class="anim_resort"><div class="lupa"></div></div>
+<p class="title" style="margin-top:-15px;">Elije tu estación favorita</p>
+<ul style="list-style:none;">
+    <li ng-repeat="resort in resorts | orderBy:'resort.name'" class="resorts">
         <nav>
              <a href="#/resorts/{{resort.name}}">{{resort.name}}</a>
         </nav>
