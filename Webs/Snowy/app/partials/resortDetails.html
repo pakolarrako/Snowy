@@ -1,7 +1,24 @@
 <p>Pantalla con el detalle de la estacion</p>
 <label data-ng-bind="currentResort.name"></label>
 <br/>
-<label data-ng-bind="currentUserTweet.user.name"></label><label data-ng-bind="currentUserTweet.text"></label>
+<label data-ng-bind="currentDate.getDate()"></label>
+<label data-ng-bind="'/' + (currentDate.getMonth() + 1) + '/'"></label>
+<label data-ng-bind="currentDate.getFullYear()"></label>
 <br/>
-<label data-ng-bind="currentSearchTweet.from_user"></label><label data-ng-bind="currentSearchTweet.text"></label>
+<label>Min</label><label data-ng-bind="weather.low.celsius"></label>º<label>Max</label><label data-ng-bind="weather.high.celsius"></label>º
+<br/>
+<img ng-src="{{weather.icon_url}}"></img>
+<br/>
+<button data-ng-click="rate()">*</button> <label>Da tu valoración</label>
+<br/>
+<label data-ng-bind="currentResort.name + ' twitter:'"></label>
+<br/>
+<label data-ng-bind="currentUserTweet.user.name"></label>
+<label data-ng-bind="currentUserTweet.text"></label>
+<br/>
+<label data-ng-bind="'Sobre...' + currentResort.name + ':'"></label>
+<br/>
+<label data-ng-bind="currentSearchTweet.from_user + ':'"></label>
+<label data-ng-bind="currentSearchTweet.text"></label>
+<br/>
 <a href="#/resorts">Lista de estaciones</a>

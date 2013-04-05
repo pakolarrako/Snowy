@@ -27,7 +27,15 @@ factory('remotedata',
     var ResortHashtag = $resource(defaultUrl + ':idapp/resorthashtag',{}, {
     'query' : { method: 'GET', params: { idapp : idapp } , isArray : true }
     });
+    var RateCategory = $resource(defaultUrl + ':idapp/ratecategory',{}, {
+    'query' : { method: 'GET', params: { idapp : idapp } , isArray : true }
+    });
 
+    var Rate = $resource(defaultUrl + ':idapp/rate/:name/:resname/:catname/:date',{}, {
+    'query' : { method: 'GET', params: { idapp : idapp } , isArray : false },
+    'save' : { method: 'POST', params: { idapp: idapp } },
+    'update' : { method: 'PUT', params: {idapp: idapp} }
+    });
     var UserTweetsHttp = {
       get : function(params, callback){
         var mycallback = callback;
@@ -81,7 +89,9 @@ factory('remotedata',
       ResortHashtag : ResortHashtag,
       UserTweetsHttp: UserTweetsHttp,
       HashTagTweets : HashTagTweets,
-      WeatherForecast : WeatherForecast
+      WeatherForecast : WeatherForecast,
+      RateCategory : RateCategory,
+      Rate : Rate
     };
     }
 );

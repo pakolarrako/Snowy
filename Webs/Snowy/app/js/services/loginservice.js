@@ -1,8 +1,9 @@
 angular.module('snowy.userservice', []).
   // Declare new object called time,
   // which will be available for injection
-  factory('login', function(remotedata) {
+  factory('login', function($location,remotedata) {
     var user = null;
+    var logged = false;
     if (localStorage["user"])
     {
       user = JSON.parse(localStorage["user"]);
@@ -21,6 +22,7 @@ angular.module('snowy.userservice', []).
     var loggUser = function(name, email, callback){
         remotedata.Login.query({name : name, email : email},function(user){
           localStorage["user"] = JSON.stringify(user);
+          logged = true;
           callback(user);
         }, function(response){
           console.log(response);
@@ -62,11 +64,18 @@ angular.module('snowy.userservice', []).
       });
     };
 
+    var redirectIfNotLogged = function(){
+      if (logged === false){
+        $location.path('/');
+      }
+    };
+
     return {
       user : user,
       existsUser : existsUser,
       loggUser : loggUser,
       registerUser : registerUser,
-      geolocateUser : geolocateUser
+      geolocateUser : geolocateUser,
+      redirectIfNotLogged : redirectIfNotLogged
     };
   });

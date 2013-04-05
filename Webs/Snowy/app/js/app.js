@@ -12,6 +12,7 @@ angular.module( 'snowy', [ 'snowy.filters', 'snowy.services', 'snowy.directives'
 		$routeProvider.when( '/login', { templateUrl : 'partials/login.html', controller : loginCtrl } );
 		$routeProvider.when( '/register', { templateUrl : 'partials/register.html', controller: registerCtrl } );
 		$routeProvider.when( '/resorts/:resortname', { templateUrl : 'partials/resortDetails.html', controller : resortDetailsCtrl } );
+		$routeProvider.when( '/resorts/rate/:resortname', { templateUrl : 'partials/resortRate.html', controller : resortRateCtrl } );
 		$routeProvider.when( '/resorts', { templateUrl : 'partials/resortsList.html', controller : resortListCtrl } );
 		$routeProvider.otherwise({redirectTo: '/'});
   }]);
